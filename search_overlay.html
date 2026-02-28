@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Modern Line Cook - Search Overlay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec3e13", // Alert Red
+                        "background-light": "#f2f2f2", // Paper White
+                        "background-dark": "#221410",
+                        "ink": "#000000",
+                        "highlight": "#EAFF00", // Highlighter Yellow
+                        "steel": "#8A96A0",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px", 
+                        "sm": "0px",
+                        "md": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "hard": "4px 4px 0px #000000",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom blinking cursor animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .animate-blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        /* Hide scrollbar for brutalist look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Input reset to ensure brutalist style */
+        input[type="text"]:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-ink antialiased h-screen w-full overflow-hidden relative">
+<!-- Background Context (Simulating the blurred dashboard behind) -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none filter blur-sm bg-[url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2000&amp;q=80')]" data-alt="Abstract blurry kitchen background texture"></div>
+<!-- Search Overlay Container -->
+<div class="relative z-10 flex h-full w-full flex-col items-center justify-start bg-[#f2f2f2]/95 pt-20 md:pt-32 px-4 md:px-0">
+<!-- Header / Instructions -->
+<div class="w-[90%] md:w-[80%] max-w-[1200px] flex justify-between items-end mb-4 border-b border-ink/20 pb-2">
+<span class="font-mono text-sm text-steel uppercase tracking-widest">Command Line Interface // v2.0.4</span>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs bg-ink text-white px-1 py-0.5">ESC</span>
+<span class="font-mono text-xs text-ink uppercase">Close</span>
+</div>
+</div>
+</div>
+<!-- Main Input Area -->
+<div class="w-[90%] md:w-[80%] max-w-[1200px] relative group mb-12">
+<div class="flex items-baseline border-b-[4px] border-ink pb-2 focus-within:border-primary transition-colors duration-0">
+<span class="text-primary text-4xl md:text-6xl font-bold mr-4 select-none">&gt;</span>
+<input autofocus="" class="w-full bg-transparent border-none p-0 text-4xl md:text-7xl font-display font-bold text-ink placeholder:text-steel/30 uppercase tracking-tight focus:ring-0 leading-none h-auto" placeholder="SEARCH_DB..." type="text" value="CHICKEN"/>
+<div class="h-10 w-6 md:h-16 md:w-8 bg-primary animate-blink ml-1 shrink-0"></div>
+</div>
+<!-- Input Helper text -->
+<div class="flex justify-between mt-2 font-mono text-xs text-steel">
+<span>DATABASE STATUS: ONLINE</span>
+<span>4,291 RECORDS INDEXED</span>
+</div>
+</div>
+<!-- Search Results -->
+<div class="w-[90%] md:w-[80%] max-w-[1200px] flex flex-col gap-1 overflow-y-auto max-h-[60vh] no-scrollbar pb-20">
+<!-- Result Item 1 (Active) -->
+<button class="group flex w-full flex-col md:flex-row items-start md:items-center justify-between bg-highlight border border-ink p-3 md:p-4 hover:bg-highlight focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 transition-none shadow-hard cursor-pointer">
+<div class="flex items-baseline gap-3 md:gap-6 w-full md:w-auto overflow-hidden">
+<span class="font-display font-bold text-primary text-sm md:text-base tracking-wider shrink-0 min-w-[80px]">[POULTRY]</span>
+<span class="font-mono text-lg md:text-xl font-bold truncate text-ink">Chicken Thigh (Bone-in)</span>
+</div>
+<!-- Dot leaders for desktop only -->
+<div class="hidden md:block flex-grow mx-4 border-b-2 border-dotted border-ink/30 relative top-[-6px]"></div>
+<div class="flex items-center justify-between w-full md:w-auto mt-2 md:mt-0 gap-4">
+<span class="font-mono text-2xl font-bold text-ink">165°F<span class="text-sm text-steel ml-1">/74°C</span></span>
+<span class="material-symbols-outlined text-ink opacity-100 transform rotate-90 md:rotate-0">
+                        keyboard_return
+                    </span>
+</div>
+</button>
+<!-- Result Item 2 -->
+<button class="group flex w-full flex-col md:flex-row items-start md:items-center justify-between bg-white border border-transparent border-b-ink/10 hover:bg-ink/5 p-3 md:px-4 md:py-3 cursor-pointer">
+<div class="flex items-baseline gap-3 md:gap-6 w-full md:w-auto overflow-hidden">
+<span class="font-display font-bold text-steel text-sm md:text-base tracking-wider shrink-0 min-w-[80px]">[POULTRY]</span>
+<span class="font-mono text-lg md:text-xl text-ink truncate">Chicken Breast</span>
+</div>
+<!-- Dot leaders for desktop only -->
+<div class="hidden md:block flex-grow mx-4 border-b-2 border-dotted border-steel/20 relative top-[-6px]"></div>
+<div class="flex items-center justify-between w-full md:w-auto mt-2 md:mt-0 gap-4">
+<span class="font-mono text-2xl text-ink/70">165°F<span class="text-sm text-steel ml-1">/74°C</span></span>
+<span class="opacity-0 group-hover:opacity-100 font-mono text-xs bg-ink text-white px-1">SELECT</span>
+</div>
+</button>
+<!-- Result Item 3 -->
+<button class="group flex w-full flex-col md:flex-row items-start md:items-center justify-between bg-white border border-transparent border-b-ink/10 hover:bg-ink/5 p-3 md:px-4 md:py-3 cursor-pointer">
+<div class="flex items-baseline gap-3 md:gap-6 w-full md:w-auto overflow-hidden">
+<span class="font-display font-bold text-steel text-sm md:text-base tracking-wider shrink-0 min-w-[80px]">[STOCK]</span>
+<span class="font-mono text-lg md:text-xl text-ink truncate">Chicken Stock (Simmer)</span>
+</div>
+<!-- Dot leaders for desktop only -->
+<div class="hidden md:block flex-grow mx-4 border-b-2 border-dotted border-steel/20 relative top-[-6px]"></div>
+<div class="flex items-center justify-between w-full md:w-auto mt-2 md:mt-0 gap-4">
+<span class="font-mono text-2xl text-ink/70">185°F<span class="text-sm text-steel ml-1">/85°C</span></span>
+<span class="opacity-0 group-hover:opacity-100 font-mono text-xs bg-ink text-white px-1">SELECT</span>
+</div>
+</button>
+<!-- Result Item 4 -->
+<button class="group flex w-full flex-col md:flex-row items-start md:items-center justify-between bg-white border border-transparent border-b-ink/10 hover:bg-ink/5 p-3 md:px-4 md:py-3 cursor-pointer">
+<div class="flex items-baseline gap-3 md:gap-6 w-full md:w-auto overflow-hidden">
+<span class="font-display font-bold text-steel text-sm md:text-base tracking-wider shrink-0 min-w-[80px]">[DANGER]</span>
+<span class="font-mono text-lg md:text-xl text-ink truncate">Chicken (Danger Zone Max)</span>
+</div>
+<!-- Dot leaders for desktop only -->
+<div class="hidden md:block flex-grow mx-4 border-b-2 border-dotted border-steel/20 relative top-[-6px]"></div>
+<div class="flex items-center justify-between w-full md:w-auto mt-2 md:mt-0 gap-4">
+<span class="font-mono text-2xl text-primary font-bold">40°F<span class="text-sm text-primary/70 ml-1">/4°C</span></span>
+<span class="opacity-0 group-hover:opacity-100 font-mono text-xs bg-ink text-white px-1">SELECT</span>
+</div>
+</button>
+<!-- Result Item 5 -->
+<button class="group flex w-full flex-col md:flex-row items-start md:items-center justify-between bg-white border border-transparent border-b-ink/10 hover:bg-ink/5 p-3 md:px-4 md:py-3 cursor-pointer">
+<div class="flex items-baseline gap-3 md:gap-6 w-full md:w-auto overflow-hidden">
+<span class="font-display font-bold text-steel text-sm md:text-base tracking-wider shrink-0 min-w-[80px]">[MISC]</span>
+<span class="font-mono text-lg md:text-xl text-ink truncate">Fried Chicken Oil Temp</span>
+</div>
+<!-- Dot leaders for desktop only -->
+<div class="hidden md:block flex-grow mx-4 border-b-2 border-dotted border-steel/20 relative top-[-6px]"></div>
+<div class="flex items-center justify-between w-full md:w-auto mt-2 md:mt-0 gap-4">
+<span class="font-mono text-2xl text-ink/70">350°F<span class="text-sm text-steel ml-1">/177°C</span></span>
+<span class="opacity-0 group-hover:opacity-100 font-mono text-xs bg-ink text-white px-1">SELECT</span>
+</div>
+</button>
+</div>
+<!-- Footer Key Legend -->
+<div class="absolute bottom-0 w-full bg-ink text-white py-3 px-6 md:px-20 border-t-4 border-primary">
+<div class="flex flex-wrap gap-6 md:gap-12 justify-center md:justify-start font-mono text-xs md:text-sm">
+<div class="flex items-center gap-2">
+<span class="bg-white/20 px-1.5 py-0.5 rounded-none border border-white/40">↑</span>
+<span class="bg-white/20 px-1.5 py-0.5 rounded-none border border-white/40">↓</span>
+<span class="text-white/70">NAVIGATE</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-white/20 px-1.5 py-0.5 rounded-none border border-white/40">ENTER</span>
+<span class="text-white/70">SELECT</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-white/20 px-1.5 py-0.5 rounded-none border border-white/40">/</span>
+<span class="text-white/70">FOCUS</span>
+</div>
+<div class="ml-auto hidden md:block text-white/50">
+                    COOKINGTEMPS.COM // SYSTEM READY
+                </div>
+</div>
+</div>
+</div>
+</body></html>

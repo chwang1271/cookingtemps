@@ -1,0 +1,124 @@
+{
+  "designTokens": {
+    "colors": {
+      "primary": "#ec3e13",
+      "ink": "#181211",
+      "backgroundLight": "#f2f2f2",
+      "backgroundDark": "#221410",
+      "surface": "#ffffff",
+      "paper": "#f2f2f2",
+      "highlight": "#EAFF00",
+      "steel": "#8A96A0"
+    },
+    "typography": {
+      "fontFamily": {
+        "display": ["Space Grotesk", "sans-serif"],
+        "mono": ["JetBrains Mono", "monospace"]
+      }
+    },
+    "spacing": "Tailwind default spacing scale (e.g., p-4, p-6, gap-3, h-16)",
+    "borderRadius": {
+      "DEFAULT": "0px",
+      "sm": "0px",
+      "md": "0px",
+      "lg": "0px",
+      "xl": "0px",
+      "full": "9999px"
+    },
+    "boxShadow": {
+      "hard": "4px 4px 0px 0px #181211",
+      "hardSm": "2px 2px 0px 0px #181211"
+    }
+  },
+  "gridSystem": {
+    "layout": "Sidebar (w-64 on lg) + Main Flexible Content area",
+    "maxConstraints": "max-w-5xl for main dashboard, max-w-[1200px] for search overlay",
+    "columns": "Responsive grid usage: grid-cols-1 to md:grid-cols-3 for tools, grid-cols-1 to sm:grid-cols-2 for danger zone, lg:grid-cols-3 for smoke points."
+  },
+  "componentBreakdown": [
+    {
+      "name": "Sticky Header",
+      "purpose": "Top navigation containing branding and search entry point."
+    },
+    {
+      "name": "Sidebar Navigation",
+      "purpose": "Left-side menu containing anchor links to modules, tools, and displaying system status."
+    },
+    {
+      "name": "Search Overlay / Command Line Interface",
+      "purpose": "Full-screen modal to quickly jump to food temperatures via text input, maintaining a tech/brutalist aesthetic."
+    },
+    {
+      "name": "Data Table (Meat & Poultry)",
+      "purpose": "Displays temperature thresholds for various meats organized by doneness."
+    },
+    {
+      "name": "Unit Converter",
+      "purpose": "Rapidly converts temperatures between Celsius, Fahrenheit, and Kelvin using three bound input fields."
+    },
+    {
+      "name": "Visual Temperature Bar (Danger Zone)",
+      "purpose": "Thermometer-style visual representation of safe and unsafe temperature zones."
+    },
+    {
+      "name": "Danger Context Card",
+      "purpose": "Displays holding temperatures and bacterial reasoning facts."
+    },
+    {
+      "name": "List Card (Smoke Points)",
+      "purpose": "Categorized list of oils and their respective smoke points."
+    },
+    {
+      "name": "Affiliate Hardware Card",
+      "purpose": "Promotes recommended thermometer hardware with purchase links and prices."
+    },
+    {
+      "name": "Mobile Nav Toggle",
+      "purpose": "Floating action button providing access to navigation on mobile screens."
+    },
+    {
+      "name": "Footer Key Legend",
+      "purpose": "Describes keyboard shortcuts available in the Search Overlay."
+    }
+  ],
+  "sectionHierarchy": [
+    "Header",
+    "Main Layout Container",
+    "  - Sidebar Navigation",
+    "  - Main Feed Content",
+    "    - Module: Meat & Poultry (Data Table)",
+    "    - Module: Converter (Unit Converter)",
+    "    - Module: Danger Zone",
+    "    - Module: Smoke Points",
+    "    - Recommended Hardware Affiliate Section",
+    "    - Footer",
+    "Search Overlay (when active)",
+    "  - Background Context Layer",
+    "  - Header / Instructions",
+    "  - Main Input Area",
+    "  - Search Results List",
+    "  - Footer Key Legend"
+  ],
+  "reusablePatterns": [
+    {
+      "name": "Brutalist Cards",
+      "traits": "Thick borders (border, border-2), hard shadows (shadow-hard), highly contrasted headers (uppercase, Space Grotesk font)."
+    },
+    {
+      "name": "Interactive Data Tables",
+      "traits": "Full width, hover states (hover:bg-gray-100 or line highlights), distinct headers with heavy background."
+    },
+    {
+      "name": "Badges & Pills",
+      "traits": "Square corners, solid background blocks with mono font (e.g., REF-001, Biohazard), status pulsing dots."
+    },
+    {
+      "name": "Form Inputs",
+      "traits": "Thick borders (border-2 border-ink), square corners, focus rings removed or replaced by shadow/border color changes."
+    },
+    {
+      "name": "Result List Items",
+      "traits": "Flex row containers with baseline alignment, categorical tags (e.g. [POULTRY]), dotted leader lines on desktop, and trailing data/actions."
+    }
+  ]
+}
