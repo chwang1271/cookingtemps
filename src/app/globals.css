@@ -1,28 +1,31 @@
 @import "tailwindcss";
 
+/* Switch dark: variant from OS media-query to .dark class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ═══════════════════════════════════════════════════════════
    COOKINGTEMPS.COM — DESIGN TOKENS (Stitch Brutalist Theme)
    ═══════════════════════════════════════════════════════════ */
 
-@theme inline {
+@theme {
   /* — Colors — */
-  --color-primary:    #ec3e13;
-  --color-ink:        #181211;
-  --color-paper:      #f2f2f2;
-  --color-surface:    #ffffff;
-  --color-highlight:  #EAFF00;
-  --color-steel:      #8A96A0;
-  --color-bg-dark:    #221410;
-  --color-safe:       #22C55E;
-  --color-danger:     #EF4444;
-  --color-caution:    #F59E0B;
+  --color-primary: #ec3e13;
+  --color-ink: #181211;
+  --color-paper: #f2f2f2;
+  --color-surface: #ffffff;
+  --color-highlight: #EAFF00;
+  --color-steel: #8A96A0;
+  --color-bg-dark: #221410;
+  --color-safe: #22C55E;
+  --color-danger: #EF4444;
+  --color-caution: #F59E0B;
 
   /* — Typography — */
   --font-display: "Space Grotesk", sans-serif;
-  --font-mono:    "JetBrains Mono", monospace;
+  --font-mono: "JetBrains Mono", monospace;
 
   /* — Shadows — */
-  --shadow-hard:    4px 4px 0px 0px #181211;
+  --shadow-hard: 4px 4px 0px 0px #181211;
   --shadow-hard-sm: 2px 2px 0px 0px #181211;
 }
 
@@ -31,13 +34,23 @@
    ═══════════════════════════════════════════════════ */
 
 :root {
+  /* design_data.json → backgroundLight / ink */
   --background: #f2f2f2;
   --foreground: #181211;
+  --section-bg: #f2f2f2;
+  /* = color-paper (backgroundLight) */
+  --section-fg: #181211;
+  /* = color-ink */
 }
 
 .dark {
+  /* design_data.json → backgroundDark / paper */
   --background: #221410;
   --foreground: #f2f2f2;
+  --section-bg: #221410;
+  /* = color-bg-dark (backgroundDark) */
+  --section-fg: #f2f2f2;
+  /* = color-paper */
 }
 
 html {
@@ -65,14 +78,17 @@ body {
   width: 12px;
   height: 12px;
 }
+
 ::-webkit-scrollbar-track {
   background: #f2f2f2;
   border-left: 1px solid #181211;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #181211;
   border: 2px solid #f2f2f2;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #ec3e13;
 }
@@ -81,10 +97,12 @@ body {
   background: #221410;
   border-left: 1px solid #3a2520;
 }
+
 .dark ::-webkit-scrollbar-thumb {
   background: #f2f2f2;
   border: 2px solid #221410;
 }
+
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #ec3e13;
 }
@@ -96,25 +114,25 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 .danger-hatch {
-  background: repeating-linear-gradient(
-    45deg,
-    #ec3e13,
-    #ec3e13 10px,
-    transparent 10px,
-    transparent 20px
-  );
+  background: repeating-linear-gradient(45deg,
+      #ec3e13,
+      #ec3e13 10px,
+      transparent 10px,
+      transparent 20px);
 }
 
 .section-active {
   color: #ec3e13;
   font-weight: 700;
 }
+
 .section-active::before {
   content: '► ';
   margin-right: 4px;
@@ -122,7 +140,10 @@ body {
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
