@@ -39,7 +39,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Section: Unit Converter ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+        <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <ConverterSection />
         </div>
 
@@ -49,7 +49,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Section: Danger Zone ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+        <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <DangerZoneSection />
         </div>
 
@@ -59,7 +59,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Section: Smoke Points ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+        <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <SmokePointsSection />
         </div>
 
@@ -69,7 +69,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Section: Baking ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+        <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <BakingSection />
         </div>
 
@@ -79,7 +79,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Section: Fun Facts ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+        <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <FunFactsSection />
         </div>
 
