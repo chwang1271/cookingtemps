@@ -43,24 +43,24 @@ export default function HomePage() {
           <ConverterSection />
         </div>
 
-        {/* ── Section: Danger Zone ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20">
-          <DangerZoneSection />
-        </div>
-
-        {/* ── Section: Smoke Points ── */}
-        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
-          <SmokePointsSection />
-        </div>
-
         {/* ── Section: Oven Temps ── */}
         <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <OvenTempsSection />
         </div>
 
-        {/* ── Section: Cooking Methods ── */}
+        {/* ── Section: Danger Zone ── */}
         <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+          <DangerZoneSection />
+        </div>
+
+        {/* ── Section: Cooking Methods ── */}
+        <div className="border-b-2 border-ink/10 dark:border-steel/20">
           <CookingMethodsSection />
+        </div>
+
+        {/* ── Section: Smoke Points ── */}
+        <div className="border-b-2 border-ink/10 dark:border-steel/20 bg-ink dark:bg-paper/5">
+          <SmokePointsSection />
         </div>
 
         {/* ── Section: Sugar Stages ── */}
