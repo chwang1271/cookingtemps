@@ -8,12 +8,14 @@ import { SECTION_IDS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ExternalLink, ShoppingCart, Star, Zap } from "lucide-react";
 
-/* ── Star rating strip (static editorial scores) ─────────────────────── */
+/* ── Star rating strip (based on customer reception) ─────────────────── */
 const RATINGS: Record<string, number> = {
+    "javelin-pro-duo": 5,
+    "thermopop-2": 4,
     "thermapen-one": 5,
-    "ir-gun": 4,
-    "meater-plus": 4,
-    "thermoworks-smoke": 5,
+    "thermapen-classic": 5,
+    "tempspike-twin": 4,
+    "etekcity-ir": 4,
 };
 
 function StarRating({ id }: { id: string }) {
@@ -70,25 +72,34 @@ function SpecPill({ label, value }: { label: string; value: string }) {
     );
 }
 
+/* ── Badge config per variant ───────────────────────────────────── */
+const BADGE_CONFIG: Record<
+    NonNullable<Product["badge"]>,
+    { label: string; ribbon: string; border: string; btn: string }
+> = {
+    "Most Popular": { label: "★ MOST POPULAR", ribbon: "bg-primary text-paper", border: "border-primary shadow-[2px_2px_0px_0px_var(--color-primary)]", btn: "bg-primary text-paper border-primary hover:bg-primary/90" },
+    "Budget Pick": { label: "★ BUDGET PICK", ribbon: "bg-safe text-paper", border: "border-safe shadow-[2px_2px_0px_0px_var(--color-safe)]", btn: "bg-safe text-paper border-safe hover:bg-safe/90" },
+    "High-End Pick": { label: "★ HIGH-END PICK", ribbon: "bg-highlight text-ink", border: "border-highlight shadow-[2px_2px_0px_0px_var(--color-highlight)]", btn: "bg-highlight text-ink border-highlight hover:bg-highlight/90" },
+    "Professional Pick": { label: "★ PROFESSIONAL PICK", ribbon: "bg-ink text-paper dark:bg-paper dark:text-ink", border: "border-ink dark:border-steel", btn: "bg-ink text-paper border-ink dark:bg-paper dark:text-ink dark:border-paper hover:opacity-80" },
+};
+
 /* ── Individual product card ─────────────────────────────────────────── */
 function ProductCard({ product }: { product: Product }) {
-    const isEditorsPick = product.badge === "Editor's Pick";
+    const badgeCfg = product.badge ? BADGE_CONFIG[product.badge] : null;
 
     return (
         <div
             className={cn(
                 "group relative flex flex-col border-2 overflow-hidden transition-all",
                 "hover:shadow-hard hover:-translate-y-0.5",
-                isEditorsPick
-                    ? "border-primary shadow-[2px_2px_0px_0px_var(--color-primary)]"
-                    : "border-ink/30 dark:border-steel/40"
+                badgeCfg ? badgeCfg.border : "border-ink/30 dark:border-steel/40"
             )}
             aria-label={product.name}
         >
-            {/* Editor's Pick ribbon */}
-            {isEditorsPick && (
-                <div className="absolute top-3 left-0 z-10 bg-primary text-paper font-mono text-[9px] font-bold uppercase tracking-widest px-2 py-0.5">
-                    ★ EDITOR'S PICK
+            {/* Badge ribbon */}
+            {badgeCfg && (
+                <div className={cn("absolute top-3 left-0 z-10 font-mono text-[9px] font-bold uppercase tracking-widest px-2 py-0.5", badgeCfg.ribbon)}>
+                    {badgeCfg.label}
                 </div>
             )}
 
@@ -97,8 +108,11 @@ function ProductCard({ product }: { product: Product }) {
 
             {/* Card body */}
             <div className="flex flex-col gap-3 p-4 flex-1 bg-surface dark:bg-ink/10">
-                {/* Name + stars */}
+                {/* Category + name + stars */}
                 <div>
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-steel border border-ink/15 dark:border-steel/25 px-1.5 py-0.5 inline-block mb-1">
+                        {product.category}
+                    </span>
                     <StarRating id={product.id} />
                     <h3 className="font-display font-bold text-base uppercase tracking-wide text-ink dark:text-paper mt-1 group-hover:text-primary transition-colors">
                         {product.name}
@@ -129,9 +143,7 @@ function ProductCard({ product }: { product: Product }) {
                         className={cn(
                             "flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider px-3 py-2",
                             "transition-all border-2",
-                            isEditorsPick
-                                ? "bg-primary text-paper border-primary hover:bg-primary/90"
-                                : "bg-ink text-paper border-ink dark:bg-paper dark:text-ink dark:border-paper hover:opacity-80"
+                            badgeCfg ? badgeCfg.btn : "bg-ink text-paper border-ink dark:bg-paper dark:text-ink dark:border-paper hover:opacity-80"
                         )}
                     >
                         <ShoppingCart size={12} aria-hidden="true" />
@@ -152,9 +164,7 @@ function AffiliateDisclosure() {
                 info
             </span>
             <p className="font-mono text-[10px] text-steel leading-relaxed">
-                <strong className="text-ink dark:text-paper">Affiliate disclosure:</strong> Some links on this
-                page are affiliate links. If you make a purchase through them, CookingTemps.com may earn a
-                small commission at no extra cost to you. We only recommend gear we actually use and trust.
+                <strong className="text-ink dark:text-paper">Affiliate disclosure:</strong> Some links on this page are affiliate links. If you make a purchase through them, CookingTemps.com may earn a small commission at no extra cost to you. Shopping through these links helps support the site so we can keep creating helpful guides—thank you!
             </p>
         </div>
     );
@@ -172,13 +182,12 @@ export function GearSection() {
                 title="Recommended Gear"
                 refCode="GEAR-01"
                 aside={
-                    <Badge variant="primary">EDITOR-TESTED</Badge>
+                    <Badge variant="primary">RECOMMENDED GEAR</Badge>
                 }
             />
 
             <p className="font-mono text-xs text-steel mb-4 max-w-2xl leading-relaxed">
-                The right thermometer changes everything. These are the tools we trust — tested against the
-                temperatures in this guide. Accuracy listed is manufacturer-specified.
+                The right thermometer changes everything. To help you hit the temperatures in this guide, we&apos;ve rounded up some of the top-rated options based entirely on positive customer reviews. Accuracy listed is manufacturer-specified.
             </p>
 
             {/* Disclosure */}
@@ -186,7 +195,7 @@ export function GearSection() {
 
             {/* Product grid */}
             <div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
                 role="list"
                 aria-label="Recommended thermometers and gear"
             >
@@ -199,7 +208,7 @@ export function GearSection() {
 
             {/* Bottom note */}
             <p className="font-mono text-[10px] text-steel mt-6 text-center">
-                Prices subject to change · Last verified February 2026 · Links open Amazon / brand sites
+                Prices subject to change · Links open Amazon / brand sites
             </p>
         </section>
     );
