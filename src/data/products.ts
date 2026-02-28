@@ -1,9 +1,11 @@
 /* ═══════════════════════════════════════════
-   AFFILIATE PRODUCT DATA (Phase 1 — Static)
+   AFFILIATE PRODUCT DATA
+   Tracking is embedded via Amazon SiteStripe URLs
    ═══════════════════════════════════════════ */
 
 export interface Product {
     id: string;
+    category: string;
     name: string;
     description: string;
     price: string;
@@ -11,45 +13,70 @@ export interface Product {
     range?: string;
     imageUrl: string;
     affiliateUrl: string;
-    badge?: "Editor's Pick";
+    badge?: "Most Popular" | "Budget Pick" | "High-End Pick" | "Professional Pick";
 }
 
 export const products: Product[] = [
     {
+        id: "javelin-pro-duo",
+        category: "Most Popular",
+        name: "Lavatools Javelin Pro Duo",
+        description: "Fast, accurate, backlit display, magnetic back.",
+        price: "$43",
+        imageUrl: "/images/placeholder.webp",
+        affiliateUrl: "https://amzn.to/3P98V4j",
+        badge: "Most Popular",
+    },
+    {
+        id: "thermopop-2",
+        category: "Best Budget Pick",
+        name: "ThermoWorks ThermoPop 2",
+        description: "Compact, waterproof, rotating display.",
+        price: "$47",
+        imageUrl: "/images/placeholder.webp",
+        affiliateUrl: "https://amzn.to/4l4AAPW",
+        badge: "Budget Pick",
+    },
+    {
         id: "thermapen-one",
-        name: "Thermapen ONE",
-        description: "Best-in-class instant-read thermometer. 1-second readings.",
-        price: "$99.00",
+        category: "Best High-End Pick",
+        name: "ThermoWorks Thermapen One",
+        description: "Extremely fast and accurate, waterproof, 5-year warranty.",
+        price: "$125",
         accuracy: "±0.5°F",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBx3tVluJK4_KwCfktjb08CpR1tE9ApDuVLo1R4AUq8RgxCTwf-Cx45YSDbAv-GzwS3-D4CFJkO8opZMcfj7Ik3n3vNfBBKMS3osgdYyb4CniFfp9NrxpYUrdfpquBcjEjBPMhj3AYy-UoOpnfX5fCgrOs4NM3IE-opWcgOslX7LQZ1mFTGLncW3meWmthzJst05xGtk7Y8c3Wb3vIC-vsk9ZDvJypSy2r3Wi-pyVYpFVoZbo6gpimn6PpPv3dDrDoFafVru9IKmqn7",
-        affiliateUrl: "#",
-        badge: "Editor's Pick",
+        imageUrl: "/images/placeholder.webp",
+        affiliateUrl: "https://amzn.to/3OIbKJB",
+        badge: "High-End Pick",
     },
     {
-        id: "ir-gun",
-        name: "Industrial IR Gun",
-        description: "Non-contact infrared thermometer for surface temperatures.",
-        price: "$45.00",
-        range: "-58°F to 1022°F",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCj-FgnAlUTQzXfFgMXAD4Kcf-RdcklYlQcKsZIppETiGyNzZl2IDp3XQx7wxB4Vq7BmOJabsy4Ub5MUNU8blheCKWtHlrJzBCjQVcYNqBbfZgsQFKYZ5K2JYJ3mO81Vy2KCYR70xA-qVEoWAhtA7dMMdsQwfQW3v8pwMtif1adbW9Doae_0Xiwhoio76vK4R8u28DTpcPrgoD3XVZIEOyWTtZj5R20ZAxjE4PDGELPlQctAQj1A_u1RQXLSW1hCSpQhDnAXUxw0i2s",
-        affiliateUrl: "#",
+        id: "thermapen-classic",
+        category: "Best Professional Pick",
+        name: "ThermoWorks Classic Thermapen",
+        description: "The industry standard for chefs, providing 2-3 second readings.",
+        price: "$105",
+        imageUrl: "/images/placeholder.webp",
+        affiliateUrl: "https://amzn.to/4u6N4uA",
+        badge: "Professional Pick",
     },
     {
-        id: "meater-plus",
-        name: "MEATER Plus",
-        description: "Wireless smart meat thermometer with Bluetooth range of 165 ft.",
-        price: "$79.95",
-        accuracy: "±1.0°F",
-        imageUrl: "/images/meater-plus.webp",
-        affiliateUrl: "#",
+        id: "tempspike-twin",
+        category: "Best Tech Pick",
+        name: "ThermoPro TP972 Twin TempSpike Plus",
+        description: "Fully wireless, dual probes, Bluetooth connectivity.",
+        price: "$90",
+        imageUrl: "/images/placeholder.webp",
+        affiliateUrl: "https://amzn.to/4u3qHWH",
     },
     {
-        id: "thermoworks-smoke",
-        name: "ThermoWorks Smoke",
-        description: "Dual-channel alarm thermometer for grills and smokers.",
-        price: "$99.00",
-        range: "-58°F to 572°F",
-        imageUrl: "/images/thermoworks-smoke.webp",
-        affiliateUrl: "#",
+        id: "etekcity-ir",
+        category: "Best Non-Contact",
+        name: "Etekcity Infrared Thermometer 774",
+        description: "Non-contact, instant surface temperature readings.",
+        price: "$19",
+        range: "-58°F to 716°F",
+        imageUrl: "/images/placeholder.webp",
+        affiliateUrl: "https://amzn.to/4aVW3pr",
     },
 ];
+
+
