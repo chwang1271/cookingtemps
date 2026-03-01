@@ -30,7 +30,7 @@ npm run build     # production build + type check
 | **Baking Temperatures** | Internal temp tables for breads and pastries with doneness cues |
 | **Beverage Temps** | Serving temperature guide for coffee, tea, beer, and wine with HOT/COLD indicators and spectrum bars |
 | **Fun Facts** | Scrolling ticker + 6 food science fact cards with auto-highlighted temperature references |
-| **Gear** | Curated affiliate thermometer cards with Editor's Pick callout and compliant disclosure |
+| **Gear** | Curated affiliate thermometer cards with category badges (Most Popular, Budget Pick, High-End Pick, Professional Pick), product images, and compliant affiliate disclosure |
 
 ---
 
@@ -39,9 +39,11 @@ npm run build     # production build + type check
 - **Global unit toggle** — switch °F / °C / K sitewide; all values update instantly via React context
 - **Click-to-copy** — every temperature is a copy button; clipboard feedback via toast notification
 - **Scroll-spy sidebar** — left nav highlights the active section as you scroll
-- **Search overlay** — `CMD+K` / `Ctrl+K` opens the command palette (Phase 2: full-text index)
-- **Dark mode** — full dark mode via CSS custom properties
+- **Search overlay** — `CMD+K` / `Ctrl+K` opens the command palette
+- **Light / dark theme** — user-selectable via header toggle, persisted to localStorage
+- **Email subscribe** — footer form (first name, last name, email) saved to Brevo via `/api/subscribe`
 - **USDA-verified data** — meat and food safety temps sourced from USDA FSIS guidelines
+- **SEO / AEO** — JSON-LD structured data (WebSite + FAQPage), sitemap.xml, robots.txt, llms.txt
 - **Accessible** — semantic HTML, ARIA roles, and live regions on interactive components
 
 ---
@@ -54,7 +56,8 @@ npm run build     # production build + type check
 | Styling | Tailwind CSS v4 with custom brutalist design tokens |
 | Language | TypeScript (strict) |
 | Icons | Lucide React + Material Symbols |
-| Fonts | Space Grotesk (display) · Space Mono (mono) |
+| Fonts | Space Grotesk (display) · JetBrains Mono (mono) |
+| Email | [Brevo](https://brevo.com) (Contacts API v3) |
 
 ---
 
@@ -63,18 +66,27 @@ npm run build     # production build + type check
 ```
 src/
 ├── app/
-│   ├── layout.tsx              # Root layout — fonts, metadata, providers
+│   ├── api/subscribe/route.ts  # Brevo email subscribe endpoint
+│   ├── privacy/page.tsx        # Privacy policy page
+│   ├── terms/page.tsx          # Terms of service page
+│   ├── sitemap.ts              # Dynamic sitemap (auto-served at /sitemap.xml)
+│   ├── layout.tsx              # Root layout — fonts, metadata, JSON-LD, providers
 │   └── page.tsx                # Homepage — assembles all 11 sections
 ├── components/
 │   ├── layout/                 # StickyHeader, SidebarNav, Footer, BackToTop
 │   ├── sections/               # One component per page section (11 total)
 │   └── ui/                     # Badge, SectionHeader, TabGroup, Toast, SearchOverlay
-├── data/                       # Typed static data modules (meats, oils, candy, etc.)
+├── data/                       # Typed static data modules (meats, oils, candy, products, etc.)
 ├── hooks/                      # useClipboard, useScrollSpy
 ├── lib/                        # tempConvert, constants, cn() utility
 └── providers/
-    └── TempUnitProvider.tsx    # Global °F / °C / K context
-```
+    ├── ThemeProvider.tsx        # Light / dark theme context
+    └── TempUnitProvider.tsx     # Global °F / °C / K context
+
+public/
+├── images/                     # Locally hosted product images
+├── robots.txt                  # Crawler rules (incl. GPTBot, Claude-Web, PerplexityBot)
+└── llms.txt                    # AEO file for AI indexing
 
 ---
 
@@ -91,9 +103,23 @@ src/
 
 ---
 
+## Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```
+BREVO_API_KEY=xkeysib-...   # Brevo v3 API key (NOT the SMTP key)
+```
+
+> Get your API key at [app.brevo.com/settings/keys/api](https://app.brevo.com/settings/keys/api). Use the **API Keys** tab — the key must start with `xkeysib-`, not `xsmtpsib-`.
+
+The subscribe route (`/api/subscribe`) automatically resolves the Brevo list ID for the list named `"cookingtemps"` on first use and caches it in-memory.
+
+---
+
 ## Deploy
 
-The app statically pre-renders and deploys to any static host. Recommended: **Vercel**.
+The app deploys to Vercel with zero configuration. Set `BREVO_API_KEY` as an environment variable in the Vercel dashboard before deploying.
 
 ```bash
 npm run build   # verify build passes
