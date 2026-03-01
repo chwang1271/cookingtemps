@@ -193,7 +193,7 @@ export function SmokePointsSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-6 leading-relaxed max-w-2xl">
+            <p className="font-mono text-base text-steel mb-6 leading-relaxed max-w-2xl">
                 Heating oil past its smoke point causes it to break down, releasing harmful compounds
                 and bitter flavours. Click any temperature to copy it. Sorted highest → lowest.
             </p>

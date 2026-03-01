@@ -155,7 +155,7 @@ export function CookingMethodsSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-6 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-6 max-w-2xl leading-relaxed">
                 Each method operates within a specific temperature range. Click any range to copy. Intensity bars
                 show heat level relative to cooking extremes.
             </p>

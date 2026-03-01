@@ -182,7 +182,7 @@ export function FunFactsSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-6 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-6 max-w-2xl leading-relaxed">
                 Temperature is physics. Here are some curiosities that will make you a more
                 intentional cook — and great dinner conversation.
             </p>

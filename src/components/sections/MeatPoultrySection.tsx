@@ -46,8 +46,8 @@ function UnitPill() {
                     onClick={() => setUnit(u)}
                     aria-label={`Show temperatures in °${u}`}
                     className={`px-3 py-1 text-xs font-mono font-bold transition-colors border-r last:border-r-0 border-ink dark:border-steel/40 ${unit === u
-                            ? "bg-ink dark:bg-paper text-paper dark:text-ink"
-                            : "bg-surface dark:bg-bg-dark text-ink dark:text-paper hover:bg-highlight hover:text-ink"
+                        ? "bg-ink dark:bg-paper text-paper dark:text-ink"
+                        : "bg-surface dark:bg-bg-dark text-ink dark:text-paper hover:bg-highlight hover:text-ink"
                         }`}
                 >
                     °{u}
@@ -76,7 +76,7 @@ export function MeatPoultrySection() {
             />
 
             {/* Click-to-copy hint */}
-            <p className="font-mono text-xs text-steel mb-4 flex items-center gap-2">
+            <p className="font-mono text-base text-steel mb-4 flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm" aria-hidden="true">touch_app</span>
                 Click any temperature to copy it to your clipboard.
             </p>

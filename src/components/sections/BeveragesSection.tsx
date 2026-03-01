@@ -203,7 +203,7 @@ export function BeveragesSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-6 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-6 max-w-2xl leading-relaxed">
                 Serving temperature dramatically affects flavour. Coffee served too hot burns;
                 red wine too cold loses aromatics. Click any card's temperature to copy it.
             </p>

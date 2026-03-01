@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { NAV_ITEMS } from "@/lib/constants";
 
 export function Footer() {
@@ -82,8 +83,8 @@ export function Footer() {
                         All temperatures verified against USDA/FDA guidelines. For commercial food safety, consult a licensed professional.
                     </span>
                     <div className="flex gap-4">
-                        <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-                        <a href="#" className="hover:text-primary transition-colors">Terms</a>
+                        <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+                        <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
                     </div>
                 </div>
             </div>

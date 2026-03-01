@@ -179,7 +179,7 @@ export function SugarStagesSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-4 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-4 max-w-2xl leading-relaxed">
                 Sugar transforms dramatically with heat. Each stage unlocks different textures and uses. Use a
                 candy thermometer — even a few degrees can change everything.
                 Click any temperature to copy it.

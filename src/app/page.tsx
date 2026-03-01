@@ -16,7 +16,8 @@ export default function HomePage() {
     <>
       <main className="font-mono text-ink dark:text-paper bg-paper dark:bg-bg-dark">
         {/* ── Hero placeholder ── */}
-        <section
+        {/* ── Hidden for now ── */}
+        {/* <section
           id="hero"
           className="min-h-[calc(100vh-4rem)] flex items-center justify-center border-b-4 border-ink dark:border-steel/30"
         >
@@ -31,7 +32,7 @@ export default function HomePage() {
               cooks and professionals.
             </p>
           </div>
-        </section>
+        </section> */}
 
         {/* ── Section: Meat & Poultry ── */}
         <div className="border-b-2 border-ink/10 dark:border-steel/20">

@@ -146,7 +146,7 @@ export function BakingSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-8 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-8 max-w-2xl leading-relaxed">
                 Internal temperature is the most reliable doneness test for baked goods — far more accurate than
                 visual cues alone. Insert your thermometer in the centre, avoiding the pan. Click any temperature to copy it.
             </p>

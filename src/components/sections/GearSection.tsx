@@ -188,7 +188,7 @@ export function GearSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-4 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-4 max-w-2xl leading-relaxed">
                 The right thermometer changes everything. To help you hit the temperatures in this guide, we&apos;ve rounded up some of the top-rated options based entirely on positive customer reviews. Accuracy listed is manufacturer-specified.
             </p>
 

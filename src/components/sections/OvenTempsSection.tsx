@@ -169,7 +169,7 @@ export function OvenTempsSection() {
                 }
             />
 
-            <p className="font-mono text-xs text-steel mb-6 max-w-2xl leading-relaxed">
+            <p className="font-mono text-base text-steel mb-6 max-w-2xl leading-relaxed">
                 Fan / convection ovens run ~25°F (14°C) hotter — reduce the listed temp or shorten cook time.
                 Always preheat at least 15 minutes. Click any range to copy it.
             </p>
