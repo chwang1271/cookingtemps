@@ -19,7 +19,7 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>("system");
+    const [theme, setTheme] = useState<Theme>("light");
     const [resolved, setResolved] = useState<"light" | "dark">("light");
 
     // Read persisted preference on mount
