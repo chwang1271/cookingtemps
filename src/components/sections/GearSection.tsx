@@ -36,20 +36,22 @@ function StarRating({ id }: { id: string }) {
 
 /* ── Product image with fallback ─────────────────────────────────────── */
 function ProductImage({ product }: { product: Product }) {
-    const isExternal = product.imageUrl.startsWith("http");
+    const hasRealImage =
+        product.imageUrl.startsWith("http") ||
+        (product.imageUrl.startsWith("/images/") && !product.imageUrl.includes("placeholder"));
 
-    if (isExternal) {
+    if (hasRealImage) {
         // eslint-disable-next-line @next/next/no-img-element
         return (
             <img
                 src={product.imageUrl}
                 alt={product.name}
-                className="w-full h-44 object-contain bg-paper p-4 grayscale group-hover:grayscale-0 transition-all duration-300"
+                className="w-full h-44 object-cover transition-all duration-300"
             />
         );
     }
 
-    // Placeholder for local images
+    // Placeholder for products without an image yet
     return (
         <div className="w-full h-44 bg-paper/80 dark:bg-ink/40 flex items-center justify-center">
             <div className="text-center">
@@ -79,7 +81,7 @@ const BADGE_CONFIG: Record<
 > = {
     "Most Popular": { label: "★ MOST POPULAR", ribbon: "bg-primary text-paper", border: "border-primary shadow-[2px_2px_0px_0px_var(--color-primary)]", btn: "bg-primary text-paper border-primary hover:bg-primary/90" },
     "Budget Pick": { label: "★ BUDGET PICK", ribbon: "bg-safe text-paper", border: "border-safe shadow-[2px_2px_0px_0px_var(--color-safe)]", btn: "bg-safe text-paper border-safe hover:bg-safe/90" },
-    "High-End Pick": { label: "★ HIGH-END PICK", ribbon: "bg-highlight text-ink", border: "border-highlight shadow-[2px_2px_0px_0px_var(--color-highlight)]", btn: "bg-highlight text-ink border-highlight hover:bg-highlight/90" },
+    "High-End Pick": { label: "★ HIGH-END PICK", ribbon: "bg-caution text-paper", border: "border-caution shadow-[2px_2px_0px_0px_var(--color-caution)]", btn: "bg-caution text-paper border-caution hover:bg-caution/90" },
     "Professional Pick": { label: "★ PROFESSIONAL PICK", ribbon: "bg-ink text-paper dark:bg-paper dark:text-ink", border: "border-ink dark:border-steel", btn: "bg-ink text-paper border-ink dark:bg-paper dark:text-ink dark:border-paper hover:opacity-80" },
 };
 
