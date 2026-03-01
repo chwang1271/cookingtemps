@@ -1,0 +1,68 @@
+# CookingTemps.com
+
+> The trusted cooking temperature reference for home cooks and food professionals.
+> Every temperature you need — USDA-verified, always free, no login required.
+
+## What This Site Is
+
+CookingTemps.com is a single-page reference tool covering:
+
+- **Meat & Poultry Internal Temperatures** — USDA-verified safe minimum temps for beef, pork, poultry, lamb, fish, and game across all doneness levels (rare → well done)
+- **Temperature Converter** — instant bidirectional conversion between Fahrenheit, Celsius, and Kelvin with common cooking presets
+- **Oven Temperature Guide** — standard descriptors (slow, moderate, hot, very hot) with °F and °C equivalents
+- **Food Danger Zone** — bacterial growth range (40°F–140°F / 4°C–60°C), USDA safety rules, 2-hour rule, thawing guidelines
+- **Cooking Methods & Heat Ranges** — stovetop, oven, grill, and specialty method temperature ranges
+- **Oil Smoke Points** — smoke point by oil type (avocado, olive, canola, coconut, etc.) across refined/unrefined grades
+- **Sugar Stages** — candy-making stages (thread → hard crack) with °F, °C, and visual descriptions
+- **Baking Temperatures** — bread, pastry, cake, cookie, and protein doneness targets
+- **Beverage Temperatures** — optimal serving and brewing temps for coffee, tea, wine, beer, and cocktails
+- **Recommended Gear** — curated thermometer recommendations with affiliate links (affiliate tag: cookingtemps-20)
+
+## Data Sources & Authority
+
+- Meat temps: USDA FSIS Safe Temperature Chart (fsis.usda.gov)
+- Sugar stages: Standard confectionery science references
+- Smoke points: Manufacturer data and peer-reviewed culinary science
+- All temperatures are given in both °F and °C
+
+## Common Questions This Site Answers
+
+- What temperature is medium-rare steak? (130–135°F / 54–57°C)
+- What is the safe internal temperature for chicken? (165°F / 74°C)
+- What is the food danger zone? (40°F–140°F / 4°C–60°C)
+- What temperature does olive oil smoke? (~375°F / 191°C for extra virgin)
+- What temperature is hard crack candy stage? (300–310°F / 149–154°C)
+- How do I convert 180°C to Fahrenheit? (356°F)
+- What temperature should I bake bread at? (375–450°F / 190–230°C)
+- What is a "moderate" oven? (325–375°F / 165–190°C)
+- What temperature should red wine be served? (55–65°F / 13–18°C)
+- What is the safest internal temp for ground beef? (160°F / 71°C)
+
+## Intended Audience
+
+Home cooks, professional chefs, culinary students, food bloggers, recipe developers, food safety educators, and anyone who cooks.
+
+## Site Structure
+
+Single-page application (SPA) at https://cookingtemps.com with section anchors:
+
+- / (Hero)
+- /#meat — Meat & Poultry
+- /#converter — Temperature Converter
+- /#oven — Oven Temps
+- /#danger — Danger Zone
+- /#methods — Cooking Methods
+- /#smoke — Oil Smoke Points
+- /#sugar — Sugar Stages
+- /#baking — Baking
+- /#beverages — Beverages
+- /#funfacts — Fun Facts
+- /#products — Recommended Gear
+
+## Licensing & Use
+
+All reference data on this site is free to use for educational purposes. Please credit CookingTemps.com when reproducing data tables.
+
+## Contact
+
+Site: https://cookingtemps.com
